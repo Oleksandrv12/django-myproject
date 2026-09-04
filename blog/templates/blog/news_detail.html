@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div class="alert alert-light">
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.text|safe }}</p>
+        
+        <div class="news-user-data">
+            <img src="{{ object.avtor.profile.img.url }}" alt={{ object.avtor.username }} />
+            <div>
+                <span class="text-muted">Публикация: {{ object.date|date:"d E в H:i" }}</span>
+                <p>Автор: <mark>{{ object.avtor }}</mark></p>
+            </div>
+        </div>
+
+        {% if user == object.avtor %}
+        <hr>
+        <a href="{% url 'news-update' object.id %}" class="btn btn-outline-success">Обновить статью</a>    
+        <a href="{% url 'news-delete' object.id %}" class="btn btn-outline-danger">Удалить статью</a>    
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+
+<img src="https://itproger.com/img/news/x1766163737.jpg.pagespeed.ic.Oz_O2Roa0U.webp"
+    class="img-thumbnail">
+<p>Диплом или самообразование — что реально важно для старта и роста в IT? Разбираем, как компании
+    принимают решения при найме и что ценится на практике.</p>
+
+<a href="https://itproger.com/news/samouchka-protiv-diploma-kogo-na-samom-dele-berut-v-it">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+
+<img src="https://itproger.com/img/news/1766163197.jpg" class="mt-5 img-thumbnail">
+<p>Войти в IT стало заметно труднее: конкуренция выросла, требования к новичкам стали выше, а «быстрые
+    пути» больше не гарантируют работу. Разбираем причины и что делать.</p>
+
+<a
+    href="https://itproger.com/news/programmirovanie-bolshe-ne-dlya-vseh-pochemu-vhod-v-it-stal-slozhnee">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+{% endblock %}

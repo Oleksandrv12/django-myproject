@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+
+{% block title %} Кабинет пользователя {% endblock %}
+
+{% block content %}
+    <div class="dashboard">
+        <h1>Кабинет пользователя</h1>
+        <div>
+            <img src="{{ user.profile.img.url }}" alt="{{ user.username }}">
+            <p>
+                <span class="username">@{{ user.username }}</span><br>
+                {% if user.email %}
+                    <b>Email:</b> {{ user.email }}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <h5 class="mt-4">Обновление</h5>
+    <form method="post" enctype="multipart/form-data" class="form-register update-user mt-2">
+        {% csrf_token %}
+        {{ update_user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button class="btn btn-warning" type="submit">Обновить</button>
+    </form>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<img src="https://itproger.com/img/news/1766163197.jpg" class="img-thumbnail">
+<p>Войти в IT стало заметно труднее: конкуренция выросла, требования к новичкам стали выше, а «быстрые
+    пути» больше не гарантируют работу. Разбираем причины и что делать.</p>
+
+<a
+    href="https://itproger.com/news/programmirovanie-bolshe-ne-dlya-vseh-pochemu-vhod-v-it-stal-slozhnee">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+
+<img src="https://itproger.com/img/news/x1766163737.jpg.pagespeed.ic.Oz_O2Roa0U.webp"
+    class="mt-5 img-thumbnail">
+<p>Диплом или самообразование — что реально важно для старта и роста в IT? Разбираем, как компании
+    принимают решения при найме и что ценится на практике.</p>
+
+<a href="https://itproger.com/news/samouchka-protiv-diploma-kogo-na-samom-dele-berut-v-it">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+{% endblock %}

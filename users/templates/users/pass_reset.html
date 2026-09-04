@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% block title %} Password reset  {% endblock %}
+
+{% block content %}
+    <h1>Password reset</h1>
+    <form method="POST" class="form-register">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning" type="submit">ask for password reset</button>
+    </form>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<img src="https://itproger.com/img/news/1766163197.jpg" class="img-thumbnail">
+<p>Войти в IT стало заметно труднее: конкуренция выросла, требования к новичкам стали выше, а «быстрые
+    пути» больше не гарантируют работу. Разбираем причины и что делать.</p>
+
+<a
+    href="https://itproger.com/news/programmirovanie-bolshe-ne-dlya-vseh-pochemu-vhod-v-it-stal-slozhnee">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+
+<img src="https://itproger.com/img/news/x1766163737.jpg.pagespeed.ic.Oz_O2Roa0U.webp"
+    class="mt-5 img-thumbnail">
+<p>Диплом или самообразование — что реально важно для старта и роста в IT? Разбираем, как компании
+    принимают решения при найме и что ценится на практике.</p>
+
+<a href="https://itproger.com/news/samouchka-protiv-diploma-kogo-na-samom-dele-berut-v-it">
+    <button class="btn btn-warning">Посмотреть</button>
+</a>
+{% endblock %}
